@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Test {
 
 	public static void main(String[] args) {
+		int nbCasesL = 10, nbCasesH = 10, positionInitialX = 5, positionInitialY = 5; //Vous pouvez changer ces parametres
+		Orientation orientationInitial = Orientation.E; //vous pouvez essayer une autre orientation
 
-		int nbCasesL = 10, nbCasesH = 10, positionInitialX = 5, positionInitialY = 5;
-		Orientation orientationInitial = Orientation.E;
 
-
-		JFrame window = new JFrame();
+		JFrame window = new JFrame(); //création d'une fenetre graphique
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Grille grille = new Grille(nbCasesL, nbCasesH);
+		Grille grille = new Grille(nbCasesL, nbCasesH); //création d'une grille
 		try{
+			//ajout d'un aspirateur dans la grille
 			grille.addAspirateur(new Aspirateur(positionInitialX - 1, positionInitialY - 1, orientationInitial, grille));
 		}catch (SortieDeLaGrilleException e){
 			e.showDialog(window);
@@ -24,6 +24,7 @@ public class Test {
 		commandesPanel.setLayout(new BoxLayout(commandesPanel, BoxLayout.X_AXIS));
 		commandesPanel.setSize(window.getContentPane().getWidth(), 50);
 		commandesPanel.add(new JLabel("Choisir les commandes : "));
+		//ajout des bouttons pour le choix des commandes
 		JButton[] buttons = new JButton[]{
 				new JButton("A"),
 				new JButton("D"),
